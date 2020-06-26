@@ -178,6 +178,10 @@ func (w *withStack) Format(s fmt.State, verb rune) {
 	}
 }
 
+func (w *withStack) StackTrace() *stack {
+	return w.stack
+}
+
 // Wrap returns an error annotating err with a stack trace
 // at the point Wrap is called, and the supplied message.
 // If err is nil, Wrap returns nil.
@@ -259,6 +263,10 @@ func (w *withMessage) Format(s fmt.State, verb rune) {
 	case 's', 'q':
 		io.WriteString(s, w.Error())
 	}
+}
+
+func (w *withMessage) Msg() string {
+	return w.msg
 }
 
 // Cause returns the underlying cause of the error, if possible.
