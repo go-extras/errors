@@ -178,8 +178,8 @@ func (w *withStack) Format(s fmt.State, verb rune) {
 	}
 }
 
-func (w *withStack) StackTrace() *stack {
-	return w.stack
+func (w *withStack) StackTrace() StackTrace {
+	return w.stack.StackTrace()
 }
 
 // Wrap returns an error annotating err with a stack trace
